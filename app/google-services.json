@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "837095862164",
+    "project_id": "my-icar-kotlin",
+    "storage_bucket": "my-icar-kotlin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:837095862164:android:a52c7c524c9edf2000e981",
+        "android_client_info": {
+          "package_name": "com.example.icarchecking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "837095862164-ekmaa3mco9jr2kgmfsh3r74i9l3rgcs1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.icarchecking",
+            "certificate_hash": "7d4308f4a8bb1d36bcad70e4901f3b99a5ea2886"
+          }
+        },
+        {
+          "client_id": "837095862164-q77be8kiajldb8i0ppvlq45bn0no4kgs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhqRMu0wyQTLCrPKveF7LEn8OOuc67FNM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "837095862164-q77be8kiajldb8i0ppvlq45bn0no4kgs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
