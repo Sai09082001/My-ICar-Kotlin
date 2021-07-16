@@ -2,6 +2,7 @@ package com.example.icarchecking
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.icu.text.IDNA
 import android.net.ConnectivityManager
 import android.widget.Toast
 import androidx.fragment.app.FragmentActivity

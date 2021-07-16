@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:minHeight="60dp"
+    android:orientation="horizontal">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="top"
+            android:layout_marginTop="@dimen/d_10"
+            android:layout_marginBottom="@dimen/d_10"
+            android:background="@drawable/bg_orange_radius"
+            android:backgroundTint="@color/colorOrange" />
+
+        <TextView
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="9dp"
+            android:background="@color/colorOrange"
+            android:minHeight="45dp" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TableRow
+            android:layout_marginTop="2.5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_date"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginStart="@dimen/d_10"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center_vertical"
+                android:text="05/07/2021"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/iv_reload"
+                android:layout_width="56dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_reload"
+                app:tint="@color/colorOrange" />
+
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/iv_timeline"
+                android:layout_width="56dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_time_line"
+                app:tint="@color/colorOrange" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/iv_show"
+                android:layout_width="56dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_arrow_up_down"
+                app:tint="@color/colorOrange" />
+        </TableRow>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:visibility="gone"
+            android:id="@+id/rv_detail_history"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/item_detail_history" />
+    </LinearLayout>
+</LinearLayout>

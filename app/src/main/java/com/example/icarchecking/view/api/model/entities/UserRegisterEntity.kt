@@ -1,4 +1,4 @@
-package com.techja.icarchecking.view.api.model.entities
+package com.example.icarchecking.view.api.model.entities
 
 import com.example.icarchecking.App
 import com.example.icarchecking.CommonUtils

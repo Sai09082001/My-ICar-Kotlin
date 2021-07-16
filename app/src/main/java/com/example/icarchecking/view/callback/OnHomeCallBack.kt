@@ -1,4 +1,4 @@
-package com.example.icarchecking.view.fragment
+package com.example.icarchecking.view.callback
 
 interface OnHomeCallBack {
     fun showFrg(backTag : String, tag : String, isBacked : Boolean)

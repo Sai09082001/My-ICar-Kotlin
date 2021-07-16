@@ -1,4 +1,4 @@
-package com.techja.icarchecking.view.fragment
+package com.example.icarchecking.view.fragment
 
 import android.util.Log
 import android.view.View
@@ -9,8 +9,6 @@ import com.example.icarchecking.R
 import com.example.icarchecking.databinding.FrgM006CreateNewPassBinding
 import com.example.icarchecking.view.ProgressLoading
 import com.example.icarchecking.view.dialog.OTPConfirmDialog
-import com.example.icarchecking.view.fragment.BaseFragment
-import com.example.icarchecking.view.fragment.M002LoginFrg
 import com.example.icarchecking.view.viewmodel.M006CreateNewPassViewModel
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
@@ -103,3 +101,4 @@ class M006CreateNewPassFrg :
         val TAG = M006CreateNewPassFrg::class.java.name
     }
 }
+

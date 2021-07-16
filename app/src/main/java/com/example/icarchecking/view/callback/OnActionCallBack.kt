@@ -1,4 +1,4 @@
-package com.example.icarchecking.view.fragment
+package com.example.icarchecking.view.callback
 
 interface OnActionCallBack {
     fun callBack(key:String, data : Any?){}

@@ -5,15 +5,20 @@ import android.app.Activity
 import android.content.pm.PackageManager
 import android.view.View
 import androidx.core.app.ActivityCompat
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.drawerlayout.widget.DrawerLayout.SimpleDrawerListener
 import com.example.icarchecking.CommonUtils
 import com.example.icarchecking.R
+import com.example.icarchecking.Storage
 import com.example.icarchecking.databinding.FrgM003MenuMainBinding
 import com.example.icarchecking.view.MapManager
+import com.example.icarchecking.view.api.model.CarInfoModelRes
+import com.example.icarchecking.view.callback.OnActionCallBack
+import com.example.icarchecking.view.dialog.CarInfoDialog
 import com.example.icarchecking.view.viewmodel.BaseViewModel
 import com.example.icarchecking.view.viewmodel.M003MenuViewModel
 import com.google.android.gms.maps.SupportMapFragment
-
 
 class M003MenuFrg : BaseFragment<FrgM003MenuMainBinding, M003MenuViewModel>() {
     companion object {
@@ -37,11 +42,62 @@ class M003MenuFrg : BaseFragment<FrgM003MenuMainBinding, M003MenuViewModel>() {
             }
         })
 
-        val mapFrg = fragmentManager?.findFragmentById(R.id.frg_map) as SupportMapFragment
+        binding?.includeActionbar?.ivMenu?.setOnClickListener(this)
+        binding?.includeActionbar?.ivMyLocation?.setOnClickListener(this)
+        binding?.includeActionbar?.ivCarList?.setOnClickListener(this)
+        binding?.includeMenu?.tvLogout?.setOnClickListener(this)
+        MapManager.getInstance().callBack = object : OnActionCallBack {
+            override fun callBack(key: String, data: Any?) {
+                if (key == CarInfoDialog.KEY_SHOW_TRACKING) {
+                    callBack?.showFrg(TAG, data, M007TrackingFrg.TAG, true)
+                } else if (key == CarInfoDialog.KEY_SHOW_HISTORY) {
+                    callBack?.showFrg(TAG, data, M008HistoryFrg.TAG, true)
+                }
+            }
+        }
+        val mapFrg = childFragmentManager.findFragmentById(R.id.frg_map) as SupportMapFragment
         mapFrg.getMapAsync {
             MapManager.getInstance().mMap = it
-            MapManager.getInstance().initMap()
+            MapManager.getInstance().initMap(MapManager.getInstance().mMap)
         }
+    }
+
+    override fun callBack(key: String, data: Any?) {
+        super.callBack(key, data)
+        if (key == M003MenuViewModel.API_KEY_GET_LIST_CAR) {
+            showListCarOnMap(data)
+        }
+    }
+
+    private fun showListCarOnMap(data: Any?) {
+        if (data == null) return
+        MapManager.getInstance().showListCar(data as CarInfoModelRes)
+    }
+
+    override fun doClickView(v: View?) {
+        when (v?.id) {
+            R.id.iv_menu -> {
+                binding?.drawer?.openDrawer(GravityCompat.START)
+            }
+            R.id.iv_my_location -> {
+                MapManager.getInstance().showMyLocation()
+            }
+            R.id.iv_car_list -> {
+                mViewModel.getListCar()
+            }
+            R.id.tv_logout -> {
+                logout()
+            }
+        }
+    }
+
+    override fun logout() {
+        CommonUtils.getInstance().clearPref(BaseViewModel.PHONE)
+        CommonUtils.getInstance().clearPref(BaseViewModel.TOKEN)
+        CommonUtils.getInstance().clearPref(BaseViewModel.USER_NAME)
+        Storage.getInstance().clearAll()
+        MapManager.getInstance().stopHandleLocation()
+        callBack?.showFrg(TAG, M002LoginFrg.TAG, false)
     }
 
     private fun checkPermission() {

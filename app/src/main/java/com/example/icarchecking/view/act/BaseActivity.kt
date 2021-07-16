@@ -8,8 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
 import androidx.viewbinding.ViewBinding
 import com.example.icarchecking.R
+import com.example.icarchecking.view.callback.OnHomeCallBack
 import com.example.icarchecking.view.fragment.BaseFragment
-import com.example.icarchecking.view.fragment.OnHomeCallBack
+
 
 abstract class BaseActivity<V : ViewBinding> : AppCompatActivity(), OnHomeCallBack {
     protected var binding: V? = null
@@ -45,7 +46,7 @@ abstract class BaseActivity<V : ViewBinding> : AppCompatActivity(), OnHomeCallBa
             if (isBacked) {
                 trans.addToBackStack(backTag)
             }
-            trans.replace(R.id.ln_main, frg).commit()
+            trans.replace(R.id.ln_main, frg). commit()
         } catch (e: Exception) {
             showNotify("Err: " + e.message)
             e.printStackTrace()

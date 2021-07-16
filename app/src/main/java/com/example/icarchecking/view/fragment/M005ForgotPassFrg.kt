@@ -8,8 +8,6 @@ import com.example.icarchecking.databinding.FrgM005ForgotPassBinding
 import com.example.icarchecking.view.api.model.UserInfoModelRes
 import com.example.icarchecking.view.viewmodel.M001RegisterViewModel
 import com.example.icarchecking.view.viewmodel.M005ForgotPassViewModel
-import com.techja.icarchecking.view.fragment.M006CreateNewPassFrg
-
 
 class M005ForgotPassFrg : BaseFragment<FrgM005ForgotPassBinding, M005ForgotPassViewModel>() {
 

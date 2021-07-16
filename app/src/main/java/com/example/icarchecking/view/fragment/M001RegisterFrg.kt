@@ -17,7 +17,6 @@ import com.example.icarchecking.view.viewmodel.BaseViewModel
 import com.example.icarchecking.view.viewmodel.M001RegisterViewModel
 import com.google.firebase.auth.FirebaseAuth
 
-
 class M001RegisterFrg : BaseFragment<FrgM001RegisterBinding, M001RegisterViewModel>(),
     PhoneAuthCallBack.CodeSentCallBack {
     private var otpDialog: OTPConfirmDialog? = null
@@ -49,7 +48,7 @@ class M001RegisterFrg : BaseFragment<FrgM001RegisterBinding, M001RegisterViewMod
         return R.layout.frg_m001_register
     }
 
-    override fun onClick(v: View?) {
+    override fun doClickView(v: View?) {
         if (v?.id == R.id.tv_register_btn) {
             phone = edtPhone?.text.toString()
             pass = edtPass?.text.toString()

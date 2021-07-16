@@ -2,12 +2,12 @@ package com.example.icarchecking
 
 import android.app.Application
 
-
 class App : Application() {
     override fun onCreate() {
         super.onCreate()
         storage = Storage()
         instance = this
+        WebSocketUtil.getInstance()?.connectWebSocket()
     }
 
     fun getStorage(): Storage {

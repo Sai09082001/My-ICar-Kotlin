@@ -10,8 +10,6 @@ import com.example.icarchecking.view.api.model.UserInfoModelRes
 import com.example.icarchecking.view.viewmodel.BaseViewModel
 import com.example.icarchecking.view.viewmodel.M002LoginViewModel
 
-
-
 class M002LoginFrg : BaseFragment<FrgM002LoginBinding, M002LoginViewModel>() {
     override fun initViews() {
         binding?.tvCreateAcc?.setOnClickListener {

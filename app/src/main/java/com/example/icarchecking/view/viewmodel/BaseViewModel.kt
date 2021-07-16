@@ -8,7 +8,7 @@ import com.example.icarchecking.CommonUtils
 import com.example.icarchecking.Storage
 import com.example.icarchecking.view.ProgressLoading
 import com.example.icarchecking.view.api.model.BaseModel
-import com.example.icarchecking.view.fragment.OnActionCallBack
+import com.example.icarchecking.view.callback.OnActionCallBack
 import com.google.gson.Gson
 import okhttp3.OkHttpClient
 import okhttp3.ResponseBody
@@ -20,16 +20,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.net.ssl.HostnameVerifier
 
-
 abstract class BaseViewModel : ViewModel() {
     val ex = MutableLiveData(false)
-    val token: String?
-        get() = CommonUtils.getInstance().getPref(TOKEN)
-    val storage: Storage?
-        get() = App.storage
     protected var mCallback: OnActionCallBack? = null
-    protected fun <T> initResponse(key: String) : Callback<T>{
-        return object : Callback<T> {
+    protected fun <T> initResponse(key: String) : Callback<T> {
+        return object : Callback<T>{
             override fun onResponse(call: Call<T>, response: Response<T>) {
                 ProgressLoading.dismiss()
                 if(response.code() == CODE_200 || response.code() == CODE_201){
@@ -60,7 +55,7 @@ abstract class BaseViewModel : ViewModel() {
             }
             when (code){
                 CODE_400 -> if (errorBody != null) {
-                    notifyToView(if (err != null) err.message else errorBody.string())
+                    notifyToView(err?.message ?: errorBody.string())
                 }
                 CODE_401 -> {
                     notifyToView("Thông tin đăng nhập sai hoặc tài khoản đã hết hạn, hãy thử đăng nhập lại!")

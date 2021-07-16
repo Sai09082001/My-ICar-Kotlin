@@ -10,7 +10,6 @@ import com.example.icarchecking.view.fragment.BaseFragment
 import com.example.icarchecking.view.viewmodel.BaseViewModel
 import com.example.icarchecking.view.viewmodel.M000SplashViewModel
 
-
 class M000SplashFrg : BaseFragment<FrgM000SplashBinding, M000SplashViewModel>() {
     companion object {
         val TAG = M000SplashFrg::class.java.name

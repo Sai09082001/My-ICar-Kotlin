@@ -2,7 +2,7 @@ package com.example.icarchecking.view.viewmodel
 
 import com.example.icarchecking.CommonUtils
 import com.example.icarchecking.view.api.APIRequest
-import com.techja.icarchecking.view.api.model.entities.UserRegisterEntity
+import com.example.icarchecking.view.api.model.entities.UserRegisterEntity
 
 
 class M001RegisterViewModel : BaseViewModel() {

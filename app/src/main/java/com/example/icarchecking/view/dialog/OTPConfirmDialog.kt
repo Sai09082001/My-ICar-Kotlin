@@ -8,12 +8,18 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.example.icarchecking.R
-import com.example.icarchecking.view.fragment.OnActionCallBack
+import com.example.icarchecking.databinding.ViewM001OtpDialogBinding
+import com.example.icarchecking.view.callback.OnActionCallBack
 import com.example.icarchecking.view.viewmodel.BaseViewModel
 
 class OTPConfirmDialog(context: Context, data: String?, callBack: OnActionCallBack) :
-    BaseDialog<BaseViewModel, String?>(context, data, R.style.dialog_style_anim) {
-    private lateinit var edtOTP : EditText
+    BaseDialog<ViewM001OtpDialogBinding, BaseViewModel, String?>(
+        context,
+        data,
+        R.style.dialog_style_anim
+    ) {
+    private lateinit var edtOTP: EditText
+
     companion object {
         const val KEY_CONFIRM_OTP = "KEY_CONFIRM_OTP"
         private const val TITLE = "Nhập mã xác nhận được gửi đến\n\n%s"
@@ -26,13 +32,13 @@ class OTPConfirmDialog(context: Context, data: String?, callBack: OnActionCallBa
     }
 
     override fun initViews() {
-        val tvOTPSent : TextView = findViewById(R.id.tv_otp_sent)
-        tvOTPSent.setText(String.format(TITLE, mData))
+        val tvOTPSent: TextView = findViewById(R.id.tv_otp_sent)
+        tvOTPSent.text = String.format(TITLE, mData)
 
-        val btnConfirm : TextView = findViewById(R.id.btn_confirm)
+        val btnConfirm: TextView = findViewById(R.id.btn_confirm)
         btnConfirm.setOnClickListener(this)
 
-        val btnBack : ImageView = findViewById(R.id.btn_back)
+        val btnBack: ImageView = findViewById(R.id.btn_back)
         btnBack.setOnClickListener(this)
 
         edtOTP = findViewById(R.id.edt_enter_otp)
@@ -43,10 +49,10 @@ class OTPConfirmDialog(context: Context, data: String?, callBack: OnActionCallBa
     }
 
     override fun onClick(view: View) {
-        when(view.id){
+        when (view.id) {
             R.id.btn_confirm -> {
                 Log.i("OTPConfirmDialog", "sending callBack")
-                if(edtOTP.text.toString().isEmpty()){
+                if (edtOTP.text.toString().isEmpty()) {
                     Toast.makeText(mContext, "Không để trống ô nhập", Toast.LENGTH_SHORT).show()
                     return
                 }
@@ -54,5 +60,9 @@ class OTPConfirmDialog(context: Context, data: String?, callBack: OnActionCallBa
             }
             R.id.btn_back -> dismiss()
         }
+    }
+
+    override fun initViewBinding(view: View?): ViewM001OtpDialogBinding {
+        return ViewM001OtpDialogBinding.bind(view!!)
     }
 }
